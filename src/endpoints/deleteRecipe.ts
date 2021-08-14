@@ -7,7 +7,7 @@ const editRecipe = async (req: Request, res: Response) => {
     try {
       const token = req.headers.authorization as string;
       const id = req.body.id
-     console.log(`receita`,id)
+
       if (!token){
         res.statusCode = 422
         throw new Error("'token'é  obrigatório")
