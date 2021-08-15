@@ -1,10 +1,12 @@
-import  connection  from "../connection"
-
-
-const printError = (error: any) => { console.log(error.sqlMessage || error.message) }
-
-const createTables = () => connection
-   .raw(`
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const connection_1 = __importDefault(require("../connection"));
+const printError = (error) => { console.log(error.sqlMessage || error.message); };
+const createTables = () => connection_1.default
+    .raw(`
 
    CREATE TABLE IF NOT EXISTS  cookenu_user(
     id VARCHAR(100) PRIMARY KEY,
@@ -33,8 +35,6 @@ const createTables = () => connection
             
 
      `)
-   .then(() => { console.log("Tabelas criadas") })
-   .catch(printError)
-
-   createTables()
-
+    .then(() => { console.log("Tabelas criadas"); })
+    .catch(printError);
+createTables();
