@@ -22,8 +22,7 @@ createRecipe = async (id: string,
         createdAt
       })
       .into(recipeTable);
-      console.log(id,id_user,author,title,)
-  }
+    }
 
   getFeed = async(id_following:string): Promise<Feed[]> => {
       const result = await connection(userTable)

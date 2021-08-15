@@ -23,7 +23,6 @@ export class FollowerData {
     const result = await connection(followerTable)
     .select("id_following")
     .where({id_user, id_following})
-    console.log(result)
     return result
     }
   
