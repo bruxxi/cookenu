@@ -58,13 +58,11 @@ getRecipeById= async (id: string): Promise<user> => {
     size: number,
     offset: number
 ): Promise<recipe[]> =>{
-  console.log("chegou aqui",title, sort,order,size,offset)
     const result = await connection(recipeTable)
      .where("title", "LIKE", `%${title}%`)
      .orderBy(sort, order)
      .limit(size)
      .offset(offset)
-    console.log(result)
   const recipes = result.map(toModelRecipe)
   return recipes;
 }
