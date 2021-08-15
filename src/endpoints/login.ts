@@ -18,6 +18,11 @@ const login = async (req: Request, res: Response) => {
       let role  = req.body.role
       
       const user = await new UserData().getUserByEmail(userData.email);
+      if(!user){
+        res.statusCode = 422
+        throw new Error(`E-mail não cadastrado`)
+      }
+      
             
       const hm = new HashManager()
       const compare =  await hm.compare(userData.password, user.password)
@@ -33,7 +38,7 @@ const login = async (req: Request, res: Response) => {
   
       res.status(200).send({
         token,
-      });
+      })
     } catch (err:any) {
       res.status(400).send({
         message: err.message || err.sqlMessage

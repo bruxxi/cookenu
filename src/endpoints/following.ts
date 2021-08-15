@@ -18,6 +18,12 @@ const following = async (req: Request, res: Response) => {
   
       const user = new FollowerData()
       const following = await user.checkFollowing(id_user);
+      const userName = await new UserData().getUserById(authenticationData.id);
+      const name = userName.name
+      if (!following.id_user){
+        res.statusCode = 422
+        throw new Error(`${name} não está seguindo ninguém`)
+      }
       res.status(200).send(following);
     } catch (err:any) {
       res.status(400).send(err.sqlMessage || err.message)
