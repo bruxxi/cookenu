@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const UserData_1 = require("../data/UserData");
 const Authentication_1 = require("../services/Authentication");
 const FollowerData_1 = require("../data/FollowerData");
 const following = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -22,6 +23,12 @@ const following = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const id_user = authenticationData.id;
         const user = new FollowerData_1.FollowerData();
         const following = yield user.checkFollowing(id_user);
+        const userName = yield new UserData_1.UserData().getUserById(authenticationData.id);
+        const name = userName.name;
+        if (!following.id_user) {
+            res.statusCode = 422;
+            throw new Error(`${name} não está seguindo ninguém`);
+        }
         res.status(200).send(following);
     }
     catch (err) {

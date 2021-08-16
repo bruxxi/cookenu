@@ -27,6 +27,10 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         };
         let role = req.body.role;
         const user = yield new UserData_1.UserData().getUserByEmail(userData.email);
+        if (!user) {
+            res.statusCode = 422;
+            throw new Error(`E-mail não cadastrado`);
+        }
         const hm = new HashManager_1.default();
         const compare = yield hm.compare(userData.password, user.password);
         if (!compare) {

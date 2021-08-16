@@ -34,7 +34,6 @@ class FollowerData {
             const result = yield connection_1.default(followerTable)
                 .select("id_following")
                 .where({ id_user, id_following });
-            console.log(result);
             return result;
         });
         this.unfollow = (id_user, id_following) => __awaiter(this, void 0, void 0, function* () {

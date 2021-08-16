@@ -8,7 +8,7 @@ const cors_1 = __importDefault(require("cors"));
 const app = express_1.default();
 app.use(express_1.default.json());
 app.use(cors_1.default());
-app.listen(3003, () => {
-    console.log('Servidor rodando na porta 3003');
+app.listen(3006, () => {
+    console.log('Servidor rodando na porta 3006');
 });
 exports.default = app;

@@ -30,7 +30,6 @@ class RecipeData {
                 createdAt
             })
                 .into(recipeTable);
-            console.log(id, id_user, author, title);
         });
         this.getFeed = (id_following) => __awaiter(this, void 0, void 0, function* () {
             const result = yield connection_1.default(userTable)
@@ -55,13 +54,11 @@ class RecipeData {
             return result[0];
         });
         this.getRecipes = (title, sort, order, size, offset) => __awaiter(this, void 0, void 0, function* () {
-            console.log("chegou aqui", title, sort, order, size, offset);
             const result = yield connection_1.default(recipeTable)
                 .where("title", "LIKE", `%${title}%`)
                 .orderBy(sort, order)
                 .limit(size)
                 .offset(offset);
-            console.log(result);
             const recipes = result.map(types_1.toModelRecipe);
             return recipes;
         });
