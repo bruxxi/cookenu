@@ -1,5 +1,13 @@
-##Cookenu
+##Cookenu (Back-End Project)
 
+Documentação Postman:
+https://documenter.getpostman.com/view/15825758/Tzz7QJm4
+
+
+Link Heroku:
+ https://cookenu-bruna.herokuapp.com/
+ 
+ 
 
 Esse produto nada mais é do que uma rede social, na qual os usuários podem dividir informações relevantes sobre comidas e receitas que tenham experimentado. Ela possui todas as funcionalidades mais comuns em redes sociais:
 
